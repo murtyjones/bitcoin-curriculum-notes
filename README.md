@@ -3,8 +3,11 @@
 ## Study Group Answers
 
 1. Why did Satoshi put so much stress on the irreversibility of transactions? (Bitcoin Whitepaper)
+    * The system of electronic payments made with credit and with the possibility of transaction reversal introduces the need for more trust and creates a system where the trusted third parties that facilitate payment (banks) have to mediate disputes, increasing the cost to transact. Some fraud will always occur in such a system, further increasing costs. Satoshi wanted to build an online system that is the digital equivalent of transacting with cash, where money can't be taken back once it's spent. Thereby eliminating the need for trusted third parties to mediate disputes and the risk of being defrauded.
 1. What proposed role do SPV nodes play in the bitcoin ecosystem? (Bitcoin Whitepaper)
+    * SPV nodes have the ability to verify that a payment without needing to bear the cost of running a full node. An SPV node and maintain a copy of the blockchain's block headers, and (assuming those headers are correct) verify that a payment was included in a given block use the Merkle branch containing the transaction.
 1. How have show-stopping bugs or disruptions to the network been handled in the past? (Incomplete History of Bitcoin Development)
+    * At one time, the community was small enough that Satoshi and early maintainers were able to simply make the code changes, entice people to upgrade, and cajole miners to do any reorganizing necessary to remedy major bugs such as the one where a transaction was introduced in a block that caused an overflow.
 1. In your opinion, what did Satoshi "invent" that was truly innovative? (Bitcoin's Academic Pedigree)
 1. What is a Sybil Attack, and how has it been solved in the past? (Bitcoin's Academic Pedigree)
 1. What is the "fair exchange" problem, and how does it apply to the blockchain? (Bitcoin's Academic Pedigree)
