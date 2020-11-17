@@ -9,8 +9,11 @@
 1. How have show-stopping bugs or disruptions to the network been handled in the past? (Incomplete History of Bitcoin Development)
     * At one time, the community was small enough that Satoshi and early maintainers were able to simply make the code changes, entice people to upgrade, and cajole miners to do any reorganizing necessary to remedy major bugs such as the one where a transaction was introduced in a block that caused an overflow.
 1. In your opinion, what did Satoshi "invent" that was truly innovative? (Bitcoin's Academic Pedigree)
+    
 1. What is a Sybil Attack, and how has it been solved in the past? (Bitcoin's Academic Pedigree)
+    * A Sybil attack is one where a nefarious actor creates enough fake nodes (IE one node pretending to be many) to take over a network's consensus mechanism. In the past, two possible ways of solving the problem were 1) to have a gatekeeper allowing entry into a network (not ideal as it creates the need for trust and a single point of failure), or 2) to require each node in a network to solve a proof-of-work puzzle, which would be no problem for honest nodes, but difficult for Sybil nodes. This latter strategy creates a scenario where honest nodes end up needing to run as many nodes as they can computationally afford, so that attackers don't gain a moderate advantage by have >1 identities while honest actors only claim 1.
 1. What is the "fair exchange" problem, and how does it apply to the blockchain? (Bitcoin's Academic Pedigree)
+    
 1. Why do the authors of Bitcoin's Academic Pedigree believe that bitcoin was ignored by academia for a long time? What reputation/relationship does bitcoin have with academia today? (Bitcoin's Academic Pedigree)
 1. How do you judge the merits or value of a good project/experiment? (If I'd Known What We Were Starting)
 1. What will happen when the mining reward runs out? (Bitcoin's Security Model: A Deep Dive)
