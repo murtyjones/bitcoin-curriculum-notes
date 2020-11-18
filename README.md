@@ -9,13 +9,19 @@
 1. How have show-stopping bugs or disruptions to the network been handled in the past? (Incomplete History of Bitcoin Development)
     * At one time, the community was small enough that Satoshi and early maintainers were able to simply make the code changes, entice people to upgrade, and cajole miners to do any reorganizing necessary to remedy major bugs such as the one where a transaction was introduced in a block that caused an overflow.
 1. In your opinion, what did Satoshi "invent" that was truly innovative? (Bitcoin's Academic Pedigree)
-    
+    * Satoshi's key invention was the minting and transferring of money in a non-reversible way by using Proof of Work.
 1. What is a Sybil Attack, and how has it been solved in the past? (Bitcoin's Academic Pedigree)
     * A Sybil attack is one where a nefarious actor creates enough fake nodes (IE one node pretending to be many) to take over a network's consensus mechanism. In the past, two possible ways of solving the problem were 1) to have a gatekeeper allowing entry into a network (not ideal as it creates the need for trust and a single point of failure), or 2) to require each node in a network to solve a proof-of-work puzzle, which would be no problem for honest nodes, but difficult for Sybil nodes. This latter strategy creates a scenario where honest nodes end up needing to run as many nodes as they can computationally afford, so that attackers don't gain a moderate advantage by have >1 identities while honest actors only claim 1.
 1. What is the "fair exchange" problem, and how does it apply to the blockchain? (Bitcoin's Academic Pedigree)
-    
+    * The fair exchange problem is how to ensure that money is transferred if (and only if) an asset is transferred or a service is rendered in return. Smart contracts enable this kind of functionality in Bitcoin without the need for an arbitrator.
 1. Why do the authors of Bitcoin's Academic Pedigree believe that bitcoin was ignored by academia for a long time? What reputation/relationship does bitcoin have with academia today? (Bitcoin's Academic Pedigree)
+    * The authors believe that academia has a resistance to radical ideas, which Bitcoin was, being that it was not formally peer reviewed and didn't have much of a tie to previous work. The authors assert that academics have spent time in recent years ignoring Bitcoin or arguing why it can't work despite the fact that it already does work (I somewhat disagree with this as we've seen increasing academic mindshare going to improve Bitcoin itself). Today, Bitcoin remains somewhat unconnected from the disciplines that that it's based on. For instance the ongoing Proof of Work academic work today continues without referencing Bitcoin.
 1. How do you judge the merits or value of a good project/experiment? (If I'd Known What We Were Starting)
+   * If the main goal of a project is to market its coin so that a lot of people buy it, it's not a good project (analogy being to that of a company whose only business plan is market its stock)
+   * Where are the principals of the project/business located? Are they named Can you validate that they are who they say the are? What regulatory authorities oversee them?
+   * What legal recourse do you have in case of fraud?
+   * Is the company running the project incorporated? Do they have the appropriate licenses? Do they have a legal authority to issue stock?
+   * Basically, do diligence on these things as you would with a company.
 1. What will happen when the mining reward runs out? (Bitcoin's Security Model: A Deep Dive)
 1. Define the differences between a full node, pruned node, and an SPV node? (Security Models)
 1. What are the incentives to run a full-node? If I do run a full-node, why accept incoming connections given that they come at a cost? What might those costs be? (Security Models)
