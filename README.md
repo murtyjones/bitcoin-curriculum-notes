@@ -23,7 +23,11 @@
    * Is the company running the project incorporated? Do they have the appropriate licenses? Do they have a legal authority to issue stock?
    * Basically, do diligence on these things as you would with a company.
 1. What will happen when the mining reward runs out? (Bitcoin's Security Model: A Deep Dive)
+   * Blocks will presumably continue to be mined in order to claim Bitcoin transaction fees. Although there's some debate in the community as to whether or not the network will continue to function due to some attacks that may have more incentives in the absence of a block reward.
 1. Define the differences between a full node, pruned node, and an SPV node? (Security Models)
+   * Full node: Downloads the entire blockchain (headers and blocks), validates and relays transactions in the most-work chain. May validate and relay unconfirmed transactions but doesn't have to.
+   * Pruned node: Downloads the entire blockchain, validates all blocks, and discards blocks beyond a certain size limit (defaults to 550mb). Is still a full node in the sense that it can validate and relay transactions in the most-work chain. But is in theory susceptible to large reorgs where the reorg extends far enough back to weird the pruned node is no longer storing the blocks being reorged.
+   * SPV node: Doesn't download and validate the entire block chain. Downloads the most-work headers and can query other nodes to determine whether a transaction is included in the blockchain.
 1. What are the incentives to run a full-node? If I do run a full-node, why accept incoming connections given that they come at a cost? What might those costs be? (Security Models)
 1. What is the difference between the block propagation network and the transaction relay network? How does participating in one or the other impact your definition of a full node? (Security Models)
 1. Do you believe that bitcoin needs to be competitive with visa/mastercard to succeed? (A trip to the moon)
