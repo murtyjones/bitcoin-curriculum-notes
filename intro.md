@@ -1,6 +1,4 @@
-# Bitcoin Curriculum Notes
-
-## Study Group Answers
+# Welcome to Bitcoin Protocol Development
 
 1. Why did Satoshi put so much stress on the irreversibility of transactions? (Bitcoin Whitepaper)
     * The system of electronic payments made with credit and with the possibility of transaction reversal introduces the need for more trust and creates a system where the trusted third parties that facilitate payment (banks) have to mediate disputes, increasing the cost to transact. Some fraud will always occur in such a system, further increasing costs. Satoshi wanted to build an online system that is the digital equivalent of transacting with cash, where money can't be taken back once it's spent. Thereby eliminating the need for trusted third parties to mediate disputes and the risk of being defrauded.
