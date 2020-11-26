@@ -1,0 +1,24 @@
+# SegWit
+
+1. Is a non-segwit node considered a full node?
+    * As long as a node can download and validate the blockchain and can validate and relay transactions in the most-work chain, it's a full-node. Non-SegWit nodes can do this, including relaying SegWit transactions. It's possible that a block could be mined that breaks rules validated by SegWit nodes, which would cause non-SegWit nodes to validate a block that SegWit nodes do not validate. So one could make the argument that old nodes don't necessarily **fully** validate transactions in the most-work chain. They also don't archive the witness data and so can't relate it to other nodes. But we still consider pruned nodes to be full nodes, so I don't think this matters as much.
+1. What is the difference between a hard and soft fork? (SegWit in Mastering Bitcoin)
+    * A hard fork requires that all nodes in the network upgrade simultaneously in order to make a change to Bitcoin's consensus rules. A soft fork allows some nodes to upgrade and use new consensus functionality, while others do not upgrade. It's possible in either case for a chain split to occur, but I'd argue much more likely in the case of a hard fork.
+1. How is ECDSA malleable? (SegWit in Mastering Bitcoin)
+1. Why do second layer protocols (like Lightning) require transaction malleability to be fixed? (SegWit in Mastering Bitcoin/SegWit Benefits)
+    * Parties wanting to use the Lightning Network have to construct transactions based on other transactions that are not confirmed in the Bitcoin blockchain. The ability to do so is the key feature of LN that allows off-chain transacting. In order to create valid transactions based on unconfirmed transactions, the `txid` is needed, and one has to be certain that the `txid` cannot be changed, or else the commitment/revocation transactions being traded may become invalid before being confirmed, rendering the subsequent transactions invalid.
+1. How should one understand anyone-can-spend outputs? Do nodes with and without the SegWit upgrade behave differently while validating or enforcing? (SegWit in Mastering Bitcoin)
+    * The general idea of an anyone-can-spend output is in the name – anyone can spend the coins in the output. As it applies to SegWit, nodes that are not upgraded see SegWit out
+1. How does new script versions remain backwards compatible? How were script upgrades done in the past? (SegWit in Mastering Bitcoin/SegWit Benefits/Advanced SegWit)
+    * The locking script is preceded by a script number, which allows for future soft-forks introducing new version numbers with new functionality while allowing the prior versions to still be used. Starting in Bitcoin 0.9.2, Pay-to-Script-Hash transactions are able to contain any valid of script (other than another P2SH script, because of the dangers of recursion), making them more flexible to be used in different ways.
+1. How is witness data committed to the block? (SegWit in Mastering Bitcoin/Advanced SegWit)
+    * The witness data merkle root is committed in the coinbase transaction.
+1. What was the quadratic sighash problem prior to Segwit? How does BIP 143 solve this? (SegWit's Impact on Scalability/SegWit Benefits)
+1. What is weight versus virtual bytes? How do they differ? How does weight change the relative costs of inputs and outputs? (Advanced SegWit)
+1. What rationale was used to decide on the 4 MB SegWit block weight (3 x old_tx_bytes + segwit_tx_bytes), instead of say a 2 MB block weight (old_tx_bytes + segwit_tx_bytes)? (SegWit's Impact on Scalability/Advanced SegWit)
+1. How does a virtual block increase affect IBD cost over time? (Advanced SegWit)
+1. What is ASIC BOOST and what did it have to do with SegWit's deployment? (Gregory Maxwell’s Inhibition Proposal)
+1. How could BIP 9 be considered controversial within the community? How was BIP 148 received when first proposed? (Advanced SegWit)
+1. How did users know whether miners support SegWit prior to activation? (The Long Road to SegWit)
+1. [Optional] What are some address format design goals and requirements discussed in the bech32 talk? How problematic is the bech32 mutability issue for v0 segwit addresses versus for taproot? (Bech32)
+1. [Optional] What is the difference between wrapped SegWit and native SegWit addresses? (SegWit Wallet Development)
