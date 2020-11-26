@@ -14,6 +14,7 @@
 1. How is witness data committed to the block? (SegWit in Mastering Bitcoin/Advanced SegWit)
     * The witness data merkle root is committed in the coinbase transaction.
 1. What was the quadratic sighash problem prior to Segwit? How does BIP 143 solve this? (SegWit's Impact on Scalability/SegWit Benefits)
+    * When verifying transactions signed with the `SIGHASH_ALL` flag, the number of hashing operations needed grows proportional to the number of inputs in the transaction. For example, if verifying a transactions with two inputs, four hashing opertions are needed. This happens because for each input, we need to hash that input, *and* we need to hash the Transaction ID and the index of the other inputs in the transaction. In SegWit, because signature data is separated from the rest of the transaction data, we only need to perform one hash per input. So the complexity to verify a transaction goes from O(n<sup>2</sup>) to O(n), where `n` is the number of inputs.
 1. What is weight versus virtual bytes? How do they differ? How does weight change the relative costs of inputs and outputs? (Advanced SegWit)
 1. What rationale was used to decide on the 4 MB SegWit block weight (3 x old_tx_bytes + segwit_tx_bytes), instead of say a 2 MB block weight (old_tx_bytes + segwit_tx_bytes)? (SegWit's Impact on Scalability/Advanced SegWit)
 1. How does a virtual block increase affect IBD cost over time? (Advanced SegWit)
