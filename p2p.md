@@ -15,6 +15,25 @@
 
 ### Transaction Trivia
 
-1. Why must transaction unlocking scripts only push numbers to be relayed? What output scripts are 'IsStandard'?
+1. Why must transaction unlocking scripts only push numbers to be relayed?
+
+- Transaction locking scripts specify the requirements that must be fulfilled to spend a UTXO, and locking scripts generally include placeholders for values that must be provided in the unlocking script. When spending an input, values must be placed into the unlocking script of a transaction, such that any bitcoin node can evaluate the script and determine whether the transaction is authorized to spend the input. The combination of the locking script and the unlocking script in a transaction must result in the “stack” evaluating to a non-zero value for the input to be considered spendable. The only types of values that can exist on the “stack” to be evaluated in transaction execution are numbers. These numbers could represent cryptographic keys, time, or arbitrary values.
+
+1. What output scripts are 'IsStandard'?
+
+Bitcoin contains standardness checks for a transaction's version, its inputs, and its outputs. Specific to transaction outputs, the standardness rules are:
+
+- [The output must not be a “dust” (IE spam) amount](https://github.com/bitcoin/bitcoin/blob/fa0074e2d82928016a43ca408717154a1c70a4db/src/policy/policy.cpp#L126)
+- [The output must not be some [unrecognized transaction type](https://github.com/bitcoin/bitcoin/blob/fa0074e2d82928016a43ca408717154a1c70a4db/src/policy/policy.cpp#L58) ([segwit](https://github.com/bitcoin/bitcoin/blob/fa0074e2d82928016a43ca408717154a1c70a4db/src/script/standard.cpp#L144) or [otherwise](https://github.com/bitcoin/bitcoin/blob/fa0074e2d82928016a43ca408717154a1c70a4db/src/script/standard.cpp#L177))]
+- If the output is “bare multsig” (IE not a P2SH multsig or a P2WSH multsig):
+    - `m-of-n` Multisig outputs must follow [these rules](https://github.com/bitcoin/bitcoin/blob/fa0074e2d82928016a43ca408717154a1c70a4db/src/policy/policy.cpp#L60):
+        - Must require at least one `m` key to spend
+        - Must have at least one `n` key enabling spending
+        - Must have no more than 3 `n` keys
+        - Must have fewer or equal `m` than `n` keys
+    - The node [must permit](https://github.com/bitcoin/bitcoin/blob/fa0074e2d82928016a43ca408717154a1c70a4db/src/policy/policy.cpp#L123) bare multisig outputs
+- If the output is arbitrary data (`NULL_DATA`), the node must accept `NULL_DATA` outputs (currently this is hardcoded to `true` via [`DEFAULT_ACCEPT_DATACARRIER`](https://github.com/bitcoin/bitcoin/blob/bd6af53e1f8ec9d25cedf0bf36c98b99a8d88774/src/script/standard.h#L15)) and the arbitrary data must be below a certain byte size ([source](https://github.com/bitcoin/bitcoin/blob/fa0074e2d82928016a43ca408717154a1c70a4db/src/policy/policy.cpp#L68))
+- Across all outputs, [only one](https://github.com/bitcoin/bitcoin/blob/fa0074e2d82928016a43ca408717154a1c70a4db/src/policy/policy.cpp#L133) may contain arbitrary data via `NULL_DATA`
+
 1. Why must transactions be > 82 bytes to be relayed?
 1. Why is the blockheight now encoded in the coinbase transaction?
